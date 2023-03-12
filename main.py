@@ -7,6 +7,7 @@ from pydantic import BaseModel
 import numpy as np
 import uvicorn
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from face_recognition_controllers import getFaceVector, matchFaceVectors
@@ -18,6 +19,20 @@ config = configparser.ConfigParser()
 config.read(configFile)
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -44,7 +59,7 @@ def getFaceVectorController(image_path: str):
         return JSONResponse(content=error, status_code=500)
     else:
         return {"status": "success",
-                "msg": f"I will return face-vector for input image at {image_path}",
+                "msg": f"Face-vector for input image at {image_path} retrieved.",
                 "data": faceVector.tolist()
                 }
 

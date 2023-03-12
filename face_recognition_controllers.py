@@ -1,3 +1,4 @@
+import cv2
 import dlib
 
 from utils.logger import logger
@@ -34,7 +35,8 @@ def getAlignedFace(face_image, model="hog"):
     alignedFace = face_image
     for index, current_face_chip in enumerate(all_face_chips):
         alignedFace = current_face_chip
-    return alignedFace
+    face_image = cv2.cvtColor(alignedFace, cv2.COLOR_BGR2RGB)
+    return face_image
 
 
 def getFaceFeatureVector(face_image, model="hog"):
@@ -49,7 +51,7 @@ def getFaceVector(image_path: str, model="hog"):
         if not is_image(image_path):
             raise ValueError(f"Path {image_path} provided is not a valid image")
         faceImage = getSignificantFace(image_path=image_path, model=model)
-        #faceImage = getAlignedFace(faceImage, model=model)
+        faceImage = getAlignedFace(faceImage, model=model)
         faceVector = getFaceFeatureVector(faceImage, model=model)
     # code that might raise an exception
     except Exception as e:
