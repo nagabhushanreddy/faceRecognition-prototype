@@ -1,4 +1,10 @@
-# Environment
+# Face Encoding and Facial Recognition
+
+## About
+
+This project is a microservice solution to create facial signature for input digital face and compare two faces via their digital encodings for nearness.
+
+## Environment
 
 - Anaconda 
 - Python 
@@ -9,7 +15,7 @@
   - numpy
   - sckit learn 
 
-# Steps to run microservice
+## Steps to run microservice
 
 Below steps to be run for bringing-up the microservice.  
 
@@ -81,7 +87,7 @@ faceRecognition) naga@MAC011 ~ % python ./main.py
 - Logging configuration is mainted in `logging.ini`
 - When configuration is changed, the application should be restarted for changes to be effective. 
 
-## Understand Fundamentals
+## Understand Fundamentals (just notes)
 
 ### Example Scripts
 
@@ -92,7 +98,7 @@ python ./examples/image_face_detection.py -i images/DSCF1934.JPG -d hog -o ./out
 
 #### Align Face 
 ```commandline
-faceRecognition) naga@MAC011 ~ % python ./examples/image_face_alignment.py -i images/elon.JPG -d hog -o ./output
+(faceRecognition) naga@MAC011 ~ % python ./examples/image_face_alignment.py -i images/elon.JPG -d hog -o ./output
 ```
 
 #### Encode Face 
@@ -107,3 +113,7 @@ faceRecognition) naga@MAC011 ~ % python ./examples/image_face_alignment.py -i im
 
 (faceRecognition) naga@MAC011 ~ % python ./examples/image_face_match.py -i1 images/elon.png -i2 images/obama.jpg -t 0.6
 ```
+
+## Disclaimer 
+
+This project is an open-source/prototype initiative, and as such, it comes with no warranty or guarantee of any kind. The authors and contributors of this project cannot be held liable for any damages or losses arising from the use or inability to use this software. All users of this project do so at their own risk, and they are responsible for ensuring that they comply with all relevant laws and regulations. The authors and contributors do not provide any support or maintenance for this project, and users are encouraged to seek out help from the wider community if they encounter any issues. By using this project, you agree to these terms and conditions.
